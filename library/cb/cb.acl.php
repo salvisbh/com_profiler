@@ -951,6 +951,11 @@ class CBACL {
 	 			} else {
 					if ( checkJversion() >= 2 ) {
 						if ( ! $this->amIaSuperAdmin() ) {
+                            /*
+                             * HPS: Keine Gruppenzugehoerigkeitspruefung durchfuehren.
+                             */
+
+                            /*
 							$userGroups	=	$this->get_object_groups( $user_id );
 							$myGroups	=	$this->get_object_groups( $_CB_framework->myId() );
 							
@@ -966,7 +971,9 @@ class CBACL {
 							{
 								$msg	.=	"You cannot $action a `$this_group`. Only higher-level users have this power. ";
 							}
+                            */
 						}
+
 					} else {
 						$myGid			=	$this->get_user_group_id( $_CB_framework->myId() );
 						$cms_admins		=	$this->mapGroupNamesToValues( array( 'Administrator', 'Superadministrator' ) );

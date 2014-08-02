@@ -1632,6 +1632,13 @@ class moscomprofilerUser extends moscomprofiler  {
 				}
 				// Security check to avoid creating/editing user to higher level than himself: CB response to artf4529.
 				if ( ( ! $i_am_super_admin ) && ( $this->gids != $oldUserComplete->gids ) ) {
+
+                    /*
+                     * HPS: Die nachfolgende Einschraenkung, dass im Fall eines Nicht - Superadmins nur die Nutzer der gleichen Gruppe gezeigt werden, wird eliminiert.
+                     * Somit koennen alle Admins saemtliche Nutzer im Backend sehen und bearbeiten.
+                     */
+
+                    /*
 					// Does user try to edit a user that has higher groups ?
 					if ( count( array_diff( $this->gids, $myGids ) ) != 0 ) {
 						$this->_error				=	'Unauthorized attempt to change an user at higher level than allowed !';
@@ -1642,7 +1649,9 @@ class moscomprofilerUser extends moscomprofiler  {
 						$this->_error				=	'Unauthorized attempt to change higher groups of an user than allowed !';
 						return false;
 					}
+                    */
 				}
+
 			}
 
 		}

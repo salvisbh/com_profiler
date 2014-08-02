@@ -138,6 +138,12 @@ class CBController_users {
 	
 		// exclude any child group id's for this user
 		//$_CB_framework->acl->_debug = true;
+
+        /*
+         * HPS: Die nachfolgende Einschraenkung, dass im Fall eines Nicht - Superadmins nur die Nutzer der gleichen Gruppe gezeigt werden, wird eliminiert.
+         * Somit koennen alle Admins saemtliche Nutzer im Backend sehen und bearbeiten.
+         */
+        /*
 		if ( ! $_CB_framework->acl->amIaSuperAdmin() ) {
 			$pgids						=	$_CB_framework->acl->get_groups_below_me( null, true );
 			if ( is_array( $pgids ) && (count( $pgids ) > 0 ) ) {
@@ -147,7 +153,8 @@ class CBController_users {
 					$tablesWhereSQL[]	=	"( u.gid IN ( " . implode( ',', $pgids ) . " ) )";
 				}
 			}
-		}
+		}*/
+
 		// Filter the checkmarked users only:
 		if ( $task !== 'showusers' ) {
 			if ( is_array( $cid ) && ( count( $cid ) > 0 ) ) {
